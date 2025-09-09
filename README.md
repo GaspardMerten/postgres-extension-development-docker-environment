@@ -2,14 +2,31 @@
 
 This project provides a Docker-based PostgreSQL environment for building, testing, and developing PostgreSQL extensions.
 
-## Getting Started
+## Quick Start: Using the Docker Hub Image
+
+The easiest way to get started is to use the pre-built image from Docker Hub.
+
+1.  **Pull the image:**
+
+    ```bash
+    docker pull gaspardmerten/postgres_extension_development
+    ```
+
+2.  **Run the container:**
+
+    ```bash
+    docker run -it -v ./extension:/extension -p 5432:5432 --name postgres-container gaspardmerten/postgres_extension_development
+    ```
+
+    This command will start the container with the local `extension` directory mounted, allowing you to work on your extension files from your host machine.
+
+## Building the Image Locally
+
+If you want to modify the development environment itself, you can build the Docker image locally.
 
 ### Prerequisites
 
 *   [Docker](https://docs.docker.com/get-docker/) must be installed on your system.
-
-While no knowledge of Docker is strictly necessary, familiarity with basic Docker commands will be helpful.
-You can find a good introduction in the [Docker documentation](https://docs.docker.com/get-started/).
 
 ### Building and Running the Container
 
@@ -18,7 +35,6 @@ You can find a good introduction in the [Docker documentation](https://docs.dock
     ```bash
     docker build -t postgres-extension-dev .
     ```
-
 
 2.  **Run the Docker container:**
 
@@ -96,3 +112,7 @@ This script performs the following steps:
 1.  Executes `make clean && make install` within the `extension` directory.
 2.  Connects to the `postgres` database.
 3.  Drops and recreates the `my_extension` extension.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
