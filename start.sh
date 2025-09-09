@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+service postgresql start
+
 # Check if extension folder exists and has content
 if [ ! -d /extension/ ] || [ -z "$(find /extension/ -mindepth 1 -print -quit)" ]; then
     echo "[init] Copying and building "
@@ -8,7 +10,6 @@ if [ ! -d /extension/ ] || [ -z "$(find /extension/ -mindepth 1 -print -quit)" ]
     pg-reload
 fi
 
-service postgresql start
 
 echo "[start] Dropping into bash"
 exec bash
