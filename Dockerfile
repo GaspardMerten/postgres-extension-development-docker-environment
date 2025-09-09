@@ -8,8 +8,7 @@ RUN apt-get update && \
         make git postgresql-server-dev-16 && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy your PostgreSQL extension source
-COPY extension /extension
+COPY ./extension /usr/local/src/extension
 WORKDIR /extension
 
 # Copy pg-reload script
