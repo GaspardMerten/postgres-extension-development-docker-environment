@@ -6,19 +6,15 @@ This project provides a Docker-based PostgreSQL environment for building, testin
 
 The easiest way to get started is to use the pre-built image from Docker Hub.
 
-1.  **Pull the image:**
+**Run the container:**
 
-    ```bash
-    docker pull gaspardmerten/postgres_extension_development
-    ```
+```bash
+docker run -it -v ./extension:/extension -p 5432:5432 --name postgres-container gaspardmerten/postgres_extension_development
+```
 
-2.  **Run the container:**
+This command will start the container with the local `extension` directory mounted, allowing you to work on your extension files from your host machine.
 
-    ```bash
-    docker run -it -v ./extension:/extension -p 5432:5432 --name postgres-container gaspardmerten/postgres_extension_development
-    ```
-
-    This command will start the container with the local `extension` directory mounted, allowing you to work on your extension files from your host machine.
+*Note: If the image is not found locally, `docker run` will automatically pull it from Docker Hub.*
 
 ## Building the Image Locally
 
