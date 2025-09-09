@@ -16,6 +16,17 @@ This command will start the container with the local `extension` directory mount
 
 *Note: If the image is not found locally, `docker run` will automatically pull it from Docker Hub.*
 
+## Short Tutorial: Understanding the Extension Structure
+
+The `extension` directory contains a minimal PostgreSQL extension to get you started. Here's a breakdown of the essential files:
+
+*   **`my_extension.control`**: This is the main control file for the extension. It tells PostgreSQL about the extension, its version, and which SQL script to run for installation.
+*   **`my_extension--1.0.sql`**: This SQL script is executed when you run `CREATE EXTENSION my_extension;`. It defines the functions, operators, and other objects that your extension provides.
+*   **`Makefile`**: This file is used by the `make` command to build your extension. It specifies the source files, compilation flags, and installation steps.
+*   **`my_extension.c`**: This is the C source code for your extension. Here, you'll define the logic for your functions. For example, the sample `my_extension.c` file might contain a simple function that adds two numbers.
+
+When you run `make install`, the compiled library (e.g., `my_extension.so`) is copied to the PostgreSQL extension directory, and the `.sql` and `.control` files are copied to the appropriate location.
+
 ## Building the Image Locally
 
 If you want to modify the development environment itself, you can build the Docker image locally.
