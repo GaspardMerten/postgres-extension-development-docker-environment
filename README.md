@@ -8,6 +8,9 @@ This project provides a Docker-based PostgreSQL environment for building, testin
 
 *   [Docker](https://docs.docker.com/get-docker/) must be installed on your system.
 
+While no knowledge of Docker is strictly necessary, familiarity with basic Docker commands will be helpful.
+You can find a good introduction in the [Docker documentation](https://docs.docker.com/get-started/).
+
 ### Building and Running the Container
 
 1.  **Build the Docker image:**
@@ -15,6 +18,7 @@ This project provides a Docker-based PostgreSQL environment for building, testin
     ```bash
     docker build -t postgres-extension-dev .
     ```
+
 
 2.  **Run the Docker container:**
 
