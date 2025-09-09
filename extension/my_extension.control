@@ -1,0 +1,8 @@
+# my_extension.control
+# PostgreSQL extension control file
+
+# Required fields
+comment = 'My first Postgres extension'
+default_version = '1.0'
+module_pathname = '$libdir/my_extension'
+relocatable = true

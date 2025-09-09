@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -e
+
+echo '[pg-reload] Building extension...'
+make -C /extension
+make -C /extension install
+
+# Switch to postgres user and reload extension
+su postgres -c "
+  echo '[pg-reload] Reloading extension in Postgres...'
+  psql -d postgres -c \"DROP EXTENSION IF EXISTS my_extension CASCADE;\"
+  psql -d postgres -c \"CREATE EXTENSION my_extension;\"
+  echo '[pg-reload] Done!'
+"
